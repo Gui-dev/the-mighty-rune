@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/sprites/Tiles/Tile-09.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/Tiles/Tile-10.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://assets/sprites/Misc/House-01.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/Misc/House-Background-01.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/Misc/House-02.png" type="Texture" id=12]
+[ext_resource path="res://scene/npc/dog.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scene/npc/village_lady.tscn" type="PackedScene" id=14]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 24, 0, 24, 24, 0, 24 )
@@ -225,6 +227,12 @@ format = 1
 tile_data = PoolIntArray( 393224, 4, 0, 393237, 6, 0, 458767, 5, 0, 655367, 0, 0, 655372, 2, 0, 655374, 1, 0, 655380, 3, 0 )
 
 [node name="npc" type="Node2D" parent="."]
+
+[node name="Dog" parent="npc" instance=ExtResource( 13 )]
+position = Vector2( 95, 156 )
+
+[node name="VillageLady" parent="npc" instance=ExtResource( 14 )]
+position = Vector2( 352, 156 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 21, 156 )
