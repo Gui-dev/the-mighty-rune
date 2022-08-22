@@ -4,6 +4,7 @@ class_name Player
 var Arrow: PackedScene = preload('res://scene/character/arrow.tscn')
 var velocity: Vector2
 var can_attack: bool = true
+onready var animation: AnimationPlayer = $animation
 onready var sprite: Sprite = get_node('texture')
 onready var spawn_arrow: Position2D = get_node('spawn_arrow')
 export(int) var move_speed
@@ -46,3 +47,8 @@ func spawn_project() -> void:
   arrow.global_position = spawn_arrow.global_position
   arrow.direction = sign(spawn_arrow.position.x)
   get_tree().root.call_deferred('add_child', arrow)
+
+
+func freeze(state: bool) -> void:
+  animation.play('idle')
+  set_physics_process(state)
