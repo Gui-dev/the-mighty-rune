@@ -1,4 +1,38 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/sprites/UI/Quest-Mark-Idle-16x16.png" type="Texture" id=1]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
 
 [node name="Npc" type="StaticBody2D"]
 
@@ -7,3 +41,17 @@
 [node name="collision" type="CollisionShape2D" parent="."]
 
 [node name="animation" type="AnimationPlayer" parent="."]
+
+[node name="interactable_area" type="Area2D" parent="."]
+
+[node name="collision" type="CollisionShape2D" parent="interactable_area"]
+
+[node name="quest_mask" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 3
+
+[node name="animation" type="AnimationPlayer" parent="quest_mask"]
+anims/RESET = SubResource( 1 )
+anims/idle = SubResource( 2 )
