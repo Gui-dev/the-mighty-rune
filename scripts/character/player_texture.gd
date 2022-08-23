@@ -57,3 +57,8 @@ func _on_animation_finished(anim_name: String) -> void:
     on_action = false
     player.can_attack = true
     player.set_physics_process(true)
+    
+  if anim_name == 'hit':
+    on_action = false
+    player.can_attack = true
+    player.set_physics_process(true)

@@ -7,6 +7,7 @@ var can_attack: bool = true
 onready var animation: AnimationPlayer = $animation
 onready var sprite: Sprite = get_node('texture')
 onready var spawn_arrow: Position2D = get_node('spawn_arrow')
+export(int) var health
 export(int) var move_speed
 export(int) var jump_speed
 export(int) var gravity_speed
@@ -52,3 +53,13 @@ func spawn_project() -> void:
 func freeze(state: bool) -> void:
   animation.play('idle')
   set_physics_process(state)
+
+
+func update_health(value: int) -> void:
+  health -= value
+    
+  if health <= 0:
+    var _change_scene: bool = get_tree().change_scene("res://scene/management/game_level.tscn")
+    return
+    
+  sprite.action_bahavior('hit')
