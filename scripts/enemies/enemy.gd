@@ -41,6 +41,7 @@ func update_health(value: int) -> void:
   health -= value
   
   if health <= 0:
+    Global.kill_count()
     queue_free() 
     return
     

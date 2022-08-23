@@ -234,13 +234,21 @@ tile_data = PoolIntArray( 393224, 4, 0, 393237, 6, 0, 458767, 5, 0, 655367, 0, 0
 position = Vector2( 95, 156 )
 
 [node name="VillageLady" parent="npc" instance=ExtResource( 14 )]
+unique_name_in_owner = true
 position = Vector2( 352, 156 )
 dialog_text = [ "Olá, aventureiro", "Tenho um pedido a lhe fazer ...", "Você poderia matar alguns monstros que estão atormentando a vila ?", "Ficaria muito grata" ]
+special_text = [ "Muito obrigado, você salvou a nossa vila" ]
 
 [node name="enemies" type="Node2D" parent="."]
 
 [node name="Enemy" parent="enemies" instance=ExtResource( 16 )]
 position = Vector2( 830, 128 )
+
+[node name="Enemy2" parent="enemies" instance=ExtResource( 16 )]
+position = Vector2( 1473, 152 )
+
+[node name="Enemy3" parent="enemies" instance=ExtResource( 16 )]
+position = Vector2( 1136, 104 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 21, 156 )
