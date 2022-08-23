@@ -3,7 +3,8 @@ class_name Arrow
 
 
 var direction: float = 1.0
-export(int)var speed = 180
+export(int) var speed = 180
+export(int) var damage
 onready var sprite: Sprite = get_node('texture')
 onready var animation: AnimationPlayer = get_node('animation')
 
@@ -17,6 +18,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
+  if body is Enemy:
+    body.update_health(damage)
+    queue_free()
+    
   if body is TileMap:
     animation.play('stuck')
     set_physics_process(false)
