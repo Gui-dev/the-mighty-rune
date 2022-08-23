@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
   _jump(delta)
   velocity = move_and_slide(velocity, Vector2.UP)
   sprite._animated(velocity)
+  _verify_height()
 
 
 func _move() -> void:
@@ -43,6 +44,11 @@ func _jump(delta: float) -> void:
     velocity.y = -jump_speed
 
 
+func _verify_height() -> void:
+  if position.y > 250:
+    var _change_scene: bool = get_tree().change_scene("res://scene/management/game_level.tscn")
+
+
 func spawn_project() -> void:
   var arrow: Arrow = Arrow.instance()
   arrow.global_position = spawn_arrow.global_position
@@ -59,6 +65,7 @@ func update_health(value: int) -> void:
   health -= value
     
   if health <= 0:
+    Global.reset()
     var _change_scene: bool = get_tree().change_scene("res://scene/management/game_level.tscn")
     return
     
